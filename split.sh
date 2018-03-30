@@ -2,11 +2,8 @@
 #
 # splitmono.sh: split subtrees within a monolithic repository to many repositories.
 
-# Default timezone for dates in logs
-: "${TZ:=MST7}"
-
 # Main branch name
-: "${UAQSRTOOLS_MAINBRANCH:=master}"
+: "${UAQSRTOOLS_MAINBRANCH=`git rev-parse --abbrev-ref HEAD`}"
 
 # Stem for writable repository URLs
 : "${UAQSRTOOLS_REPOSTEM:=git@github.com:kraynel/}"

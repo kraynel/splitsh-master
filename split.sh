@@ -1,6 +1,3 @@
-SPLITSH_LITE_PATH=/Users/kevinr/Downloads/splitsh-lite
-$SPLITSH_LITE_PATH --prefix=slave1/
-
 #!/bin/sh
 #
 # splitmono.sh: split subtrees within a monolithic repository to many repositories.
@@ -78,7 +75,7 @@ for relpath in $UAQSRTOOLS_PATHLIST ; do
   for splitprefix in "${relpath}/"* ; do
     if [ -d "$splitprefix" ]; then
       manyname=$(basename "$splitprefix")
-      sha=$("${UAQSRTOOLS_EXEPATH}${UAQSRTOOLS_SPLITTER}" --prefix="$splitprefix" --target="refs/heads/${manyname}") \
+      sha=$("${UAQSRTOOLS_EXEPATH}${UAQSRTOOLS_SPLITTER}" --prefix="$manyname" --target="refs/heads/${manyname}") \
         || errorexit "${UAQSRTOOLS_SPLITTER} crashed with status ${?} when splitting ${splitprefix}"
       [ -n "$sha" ] \
         || "Could not split ${splitprefix} from the monorepo"
